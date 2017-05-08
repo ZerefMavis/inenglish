@@ -1,0 +1,25 @@
+{
+  "name": "inenglish",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZerefMavis/inenglish.git"
+  },
+  "author": "Yoan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZerefMavis/inenglish/issues"
+  },
+  "homepage": "https://github.com/ZerefMavis/inenglish#readme",
+  "dependencies": {
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "nodemon": "^1.11.0"
+  }
+}
