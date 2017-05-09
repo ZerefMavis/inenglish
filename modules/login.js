@@ -26,7 +26,9 @@ exports.isLogged = function(session, request, db, lvlType, callback) {
 					log = true;
 				}
 			} 
+			callback(log);
 		});
-	} 
-	callback(log);
+	} else {
+		callback(log);
+	}
 }

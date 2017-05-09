@@ -25,21 +25,33 @@ app.use(session({
 
 //Routes
 app.get('/admin', (request, response) => {
-	response.render('./admin/indexAdmin');
+	login.isLogged(session, request, db, 1, (log) => {
+		if(log) {
+			response.redirect('/admin/accueil');
+		} else {
+			response.render('./admin/indexAdmin');
+		}
+	})
 });
 
 app.post('/admin', (request, response) => {
-	let username = request.body.username;
-	let password = sha1(request.body.password);
-	let key = [username, password];
-	let type = "admin";
+	login.isLogged(session, request, db, 1, (log) => {
+		if(!log) {
+			let username = request.body.username;
+			let password = sha1(request.body.password);
+			let key = [username, password];
+			let type = "admin";
 
-	login.connection(key, db, type, (connection, username) => {
-		if(connection) {
-			request.session.username = username;
-			response.redirect('/admin/accueil');
+			login.connection(key, db, type, (connection, username) => {
+				if(connection) {
+					request.session.username = username;
+					response.redirect('/admin/accueil');
+				} else {
+					response.render('./admin/indexAdmin', { error: true });
+				}
+			});
 		} else {
-			response.render('./admin/indexAdmin', { error: true });
+			response.redirect('/admin/accueil');
 		}
 	});
 });
