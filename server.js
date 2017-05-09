@@ -4,6 +4,7 @@ let bodyParser = require('body-parser');
 let sha1 = require('sha1');
 let session = require('express-session');
 
+let db = require('./modules/db');
 let login = require('./modules/login');
 
 //Moteur de template
@@ -25,7 +26,7 @@ app.get('/admin', (request, response) => {
 	response.render('./admin/indexAdmin');
 });
 
-app.post('/admin/login', (request, response) => {
+app.post('/admin', (request, response) => {
 	let username = request.body.username;
 	let password = sha1(request.body.password);
 	let key = [username, password];
@@ -34,12 +35,15 @@ app.post('/admin/login', (request, response) => {
 	login.connection(key, db, type, (connection, username) => {
 		if(connection) {
 			request.session.username = username;
-			response.redirect('./admin/accueil');
+			response.redirect('/admin/accueil');
 		} else {
-			response.locals.flash = true;
-			response.redirect('/admin');
+			response.render('./admin/indexAdmin', { error: true });
 		}
 	});
+});
+
+app.get('/admin/accueil', (request, response) => {
+	response.render('./admin/accueilAdmin');
 });
 
 //Port
