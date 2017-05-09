@@ -13,3 +13,20 @@ exports.connection = function(key, db, type, callback) {
 		callback(connection, username); 
 	});
 }
+
+exports.isLogged = function(session, request, db, lvlType, callback) {
+	let username = request.session.username;
+	let log = false;
+
+	if(username !== undefined) {
+		let statement = "SELECT LVL FROM user WHERE USERNAME = ?";
+		db.sqlSelect(statement, username, (rows) => {
+			if(rows.length !== 0) {
+				if(rows[0].LVL === lvlType) {
+					log = true;
+				}
+			} 
+		});
+	} 
+	callback(log);
+}

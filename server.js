@@ -1,3 +1,5 @@
+'use strict';
+
 let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
@@ -43,7 +45,13 @@ app.post('/admin', (request, response) => {
 });
 
 app.get('/admin/accueil', (request, response) => {
-	response.render('./admin/accueilAdmin');
+	login.isLogged(session, request, db, 1, (log) => {
+		if(log) {
+			response.render('./admin/accueilAdmin');
+		} else {
+			response.redirect('/admin');
+		}
+	});
 });
 
 //Port
