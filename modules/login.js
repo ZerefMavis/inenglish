@@ -32,3 +32,9 @@ exports.isLogged = function(session, request, db, lvlType, callback) {
 		callback(log);
 	}
 }
+
+exports.disconnect = function(request, session) {
+	request.session.destroy((err) => {
+ 		if(err) throw err;
+	});
+}

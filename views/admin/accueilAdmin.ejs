@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Connexion administrateur</title>
+	<title>Accueil administrateur</title>
 	<meta charset="utf-8"/>
-	<link rel="stylesheet" type="text/css" href="./stylesheets/admin/accueilAdmin.css">
-	<link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<script src="./javascripts/jquery.js"></script>
-	<script src="./bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/admin/accueilAdmin.css">
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<script src="/javascripts/jquery.js"></script>
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<p>Coucou</p>
+	<!-- Wrap -->
+	<div id="wrap">
+		<!-- Navbar -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+		  			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		    			<span class="sr-only">Toggle navigation</span>
+		    			<span class="icon-bar"></span>
+		    			<span class="icon-bar"></span>
+		    			<span class="icon-bar"></span>
+		  			</button>
+		  			<a class="navbar-brand" href="/admin/accueil">In'English</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  			<ul class="nav navbar-nav navbar-left">
+		  				<li class="active"><a href="#">Accueil <span class="sr-only">(current)</span></a></li>
+		    			<li><a href="/admin/new">Nouveau</a></li>
+		    			<li><a href="/admin/edit">Editer</a></li>
+		  			</ul>
+		      		<a href="/logoutAdmin"><button type="button" class="btn btn-danger navbar-btn navbar-right" style="margin-right: 10px;">Déconnexion</button></a>
+				</div>
+			</div>
+		</nav>
+		<!-- End navbar -->
+
+		<!-- Content -->
+		<div class="container-fluid">
+			<p>Bienvenue</p>
+		</div>
+		<!-- End Content -->
+	</div>
+	<!-- End wrap -->
+
+	<!-- footer -->
+	<footer id="footer">
+    	<div class="container">
+        	<p class="text-muted credit">© 2017 - Créé par Yoan Habib - Étudiant à IN'TECH Sud-Ouest.</p>
+      	</div>
+    </footer>
+    <!-- End footer -->
 </body>
 </html>

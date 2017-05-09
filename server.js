@@ -66,5 +66,14 @@ app.get('/admin/accueil', (request, response) => {
 	});
 });
 
+app.get('/logoutAdmin', (request, response) => {
+	login.isLogged(session, request, db, 1, (log) => {
+		if(log) {
+			login.disconnect(request, session);
+		}
+		response.redirect('/admin');
+	});
+});
+
 //Port
 app.listen(5000);
