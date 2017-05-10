@@ -7,6 +7,7 @@
 	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<script src="/javascripts/jquery.js"></script>
 	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
 	<!-- Wrap -->
@@ -26,8 +27,9 @@
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		  			<ul class="nav navbar-nav navbar-left">
-		  				<li class="active"><a href="#">Accueil <span class="sr-only">(current)</span></a></li>
-		    			<li><a href="/admin/new">Nouveau</a></li>
+		  				<li class="active"><a href="/accueil">Accueil <span class="sr-only">(current)</span></a></li>
+		    			<li><a href="/admin/lesson">Nouvelle leçon</a></li>
+		    			<li><a href="/admin/exercice">Nouvel exercice</a></li>
 		    			<li><a href="/admin/edit">Editer</a></li>
 		  			</ul>
 		      		<a href="/logoutAdmin"><button type="button" class="btn btn-danger navbar-btn navbar-right" style="margin-right: 10px;">Déconnexion</button></a>
@@ -37,8 +39,48 @@
 		<!-- End navbar -->
 
 		<!-- Content -->
-		<div class="container-fluid">
-			<p>Bienvenue</p>
+		<div class="container">
+			<br>
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Bienvenue sur In'English !</h2>
+					<hr class="hr">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<p>Cette partie de l'application correspond à l'administration du site. En effet, vous pouvez depuis l'interface administrateur ajoutez de nouvelles leçons et de nouveaux exercices. Vous pouvez également éditer les leçons créées en les modifiants ou en les supprimants. Pour ajouter de nouvelles leçons, rendez-vous sur la rubrique « Nouvelle leçon ». Pour ajouter de nouveaux exercices, rendez-vous sur la rubrique « Nouvel exercice ». Enfin pour éditer vos leçons, rendez-vous sur la rubrique « Editer ».</p>
+				</div>
+			</div>
+			<br>
+
+			<div class="row">
+				<div class="col-md-12">
+					<p class="bg-danger text-center"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Attention, l'élève ne doit en aucun cas posséder un compte administrateur !</p>
+				</div>				
+			</div>
+			<br><br>
+
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Commencez dès maintenant !</h2>
+				</div>
+			</div>
+			<hr class="hr">
+			<br>
+
+			<div class="row">
+				<div class="col-md-4">
+					<button type="button" class="btn btn-success btn-lg btn-block" onclick="document.location.href='/admin/lesson'">Nouvelle leçon</button>
+				</div>
+				<div class="col-md-4">
+					<button type="button" class="btn btn-success btn-lg btn-block" onclick="document.location.href='/admin/exercice'">Nouvel exercice</button>
+				</div>
+				<div class="col-md-4">
+					<button type="button" class="btn btn-success btn-lg btn-block" onclick="document.location.href='/admin/edit'">Editer</button>
+				</div>
+			</div>
 		</div>
 		<!-- End Content -->
 	</div>
