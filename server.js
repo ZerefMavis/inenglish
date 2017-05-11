@@ -75,5 +75,15 @@ app.get('/logoutAdmin', (request, response) => {
 	});
 });
 
+app.get('/admin/lesson', (request, response) => {
+	login.isLogged(session, request, db, 1, (log) => {
+		if(log) {
+			response.render('./admin/lessonAdmin');
+		} else {
+			response.redirect('/admin');
+		}
+	});
+});
+
 //Port
 app.listen(5000);

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Accueil administrateur</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="/stylesheets/admin/lessonAdmin.css">
+	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<script src="/javascripts/jquery.js"></script>
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+	<script src="/ckeditor/ckeditor.js"></script>
+	<script src="/ckeditor/adapters/jquery.js"></script>
+</head>
+<body>
+	<!-- Wrap -->
+	<div id="wrap">
+		<!-- Navbar -->
+		<nav class="navbar navbar-default navbar-fixed-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+		  			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		    			<span class="sr-only">Toggle navigation</span>
+		    			<span class="icon-bar"></span>
+		    			<span class="icon-bar"></span>
+		    			<span class="icon-bar"></span>
+		  			</button>
+		  			<a class="navbar-brand" href="/admin/accueil">In'English</a>
+				</div>
+
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  			<ul class="nav navbar-nav navbar-left">
+		  				<li><a href="/admin/accueil">Accueil <span class="sr-only">(current)</span></a></li>
+		    			<li class="active"><a href="/admin/lesson">Nouvelle leçon</a></li>
+		    			<li><a href="/admin/exercice">Nouvel exercice</a></li>
+		    			<li><a href="/admin/edit">Editer</a></li>
+		  			</ul>
+		      		<a href="/logoutAdmin"><button type="button" class="btn btn-danger navbar-btn navbar-right" style="margin-right: 10px;">Déconnexion</button></a>
+		      		<button type="button" class="btn btn-success navbar-btn navbar-right" id="addRule">+</button>
+				</div>
+			</div>
+		</nav>
+		<!-- End navbar -->
+
+		<!-- Content -->
+		<div class="container" id="container">
+			<br>
+			<div class="row">
+				<div class="col-md-11">
+					<h2>Création d'une nouvelle leçon</h2>
+					<hr class="hr">
+				</div>
+			</div>
+
+			<form id="addLesson" class="form-horizontal" action="" method="post">
+  				<div class="form-group" id="number">
+    				<div class="col-md-2">
+      					<input type="text" class="form-control" name="number" placeholder="N°">
+    				</div>
+    				<div class="col-md-10" id="title">
+      					<input type="text" class="form-control" name="title" placeholder="Titre de la leçon">
+    				</div>
+  				</div>
+
+  				<div class="form-group" id="rule">
+  					<div class="col-md-12">
+ 						<textarea id="ruleEditor1" class="ckeditor" name="rule1"></textarea> 						
+  					</div>
+  				</div>
+			</form>
+		</div>
+		<!-- End Content -->
+	</div>
+	<!-- End wrap -->
+
+	<!-- footer -->
+	<footer id="footer">
+    	<div class="container">
+        	<p class="text-muted credit">© 2017 - Créé par Yoan Habib - Étudiant à IN'TECH Sud-Ouest.</p>
+      	</div>
+    </footer>
+    <!-- End footer -->
+
+    <script type="text/javascript">
+    	let nbRule = 1;
+    	let modal = '';
+    	let tabHeader = '';
+    	let tab = '';
+    	let tabFooter = '';
+
+    	$( "#addRule" ).click(function() {
+    		nbRule++;
+ 
+    		modal = '<div id="myModal'+nbRule+'" class="modal fade" role="dialog">'
+  				  +	'<div class="modal-dialog" role="document">'
+    			  +	'<div class="modal-content">'
+     			  +	'<div class="modal-header">'
+        		  + '<h4 class="modal-title">Règle n° '+nbRule+'</h4>'
+      			  +	'</div>'
+     			  + '<div class="modal-body">'
+        		  + '<textarea id="ruleEditor'+nbRule+'" class="ckeditor" name="rule'+nbRule+'"></textarea>' 
+      			  + '</div>'
+      			  + '<div class="modal-footer">'
+       			  + '<button type="button" class="btn btn-success" data-dismiss="modal">Valider</button>'
+      			  + '</div>'
+   				  + '</div>'
+  				  + '</div>'
+				  + '</div>';
+
+			//Add modal
+			$('#addLesson').append(modal);
+			let id = "#ruleEditor" + nbRule;
+			let name = "#myModal" + nbRule;
+			$(id).ckeditor();
+  			$(name).modal('show');
+
+  			//Add name and buttons
+  			tab = '<tr>'
+  				+ '<td>Règle n° '+nbRule+'</td>'
+  				+ '<td><button type="button" class="btn btn-success" id="showRule'+nbRule+'">Voir la règle</button></td>'
+  				+ '<td><button type="button" class="btn btn-danger" id="deleteRule'+nbRule+'">Supprimer</button></td>'
+				+ '</tr>';
+
+  			if(nbRule === 2) {
+  				tabHeader = '<br><table id="addTab" class="table table-striped">'
+  					   	  + '<thead>'
+						  + '<tr>'
+						  + '<th>Nom</th>'
+						  + '<th>Règle</th>'
+						  + '<th>Action</th>'
+						  + '</tr>'
+						  + '</thead>';
+
+				tabFooter = '</table>';
+
+				tab = tabHeader + tab + tabFooter;	
+				$('#container').append(tab);				
+  			} else {
+  				$('#addTab').append(tab);
+  			}
+		});
+
+
+		$("#showRule2").click(function() {
+			alert('ok');
+		});
+    </script>
+</body>
+</html>
