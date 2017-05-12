@@ -133,15 +133,14 @@
 				tabFooter = '</table>';
 
 				tab = tabHeader + tab + tabFooter;	
-				$('#container').append(tab);				
+				$('#container').append(tab).on('click', '#showRule'+nbRule, function(){
+  					$('#myModal').modal('show'); 
+  				});				
   			} else {
-  				$('#addTab').append(tab);
+  				$('#addTab').append(tab).on('click', '#showRule'+nbRule, function(){
+  					alert('ok');
+  				});
   			}
-		});
-
-
-		$("#showRule2").click(function() {
-			alert('ok');
 		});
     </script>
 </body>
