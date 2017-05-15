@@ -48,3 +48,12 @@ exports.sqlInsert = function(statement, key) {
 	})
 	closeDb();
 }
+
+exports.sqlInsertGetId = function(statement, key, callback) {
+	openDb();
+	mySqlClient.query(statement, key, (err, result) => {
+		if(err) throw err;
+		callback(result.ID_LESSON);
+	});
+	closeDb();
+}

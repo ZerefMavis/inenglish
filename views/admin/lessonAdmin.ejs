@@ -51,19 +51,25 @@
 				</div>
 			</div>
 
-			<form id="addLesson" class="form-horizontal" action="" method="post">
+			<form id="addLesson" class="form-horizontal" action="/admin/lesson" method="post">
   				<div class="form-group" id="number">
     				<div class="col-md-2">
-      					<input type="text" class="form-control" name="number" placeholder="N°">
+      					<input type="text" class="form-control" name="num" placeholder="N°" required>
     				</div>
     				<div class="col-md-10" id="title">
-      					<input type="text" class="form-control" name="title" placeholder="Titre de la leçon">
+      					<input type="text" class="form-control" name="title" placeholder="Titre de la leçon" required>
     				</div>
   				</div>
 
   				<div class="form-group" id="rule">
   					<div class="col-md-12">
- 						<textarea id="ruleEditor1" class="ckeditor" name="rule1"></textarea> 						
+ 						<textarea id="ruleEditor1" class="ckeditor" name="rule1" required></textarea> 						
+  					</div>
+  				</div>
+
+  				<div class="row">
+  					<div class="col-md-offset-10 col-md-2">
+  						<input type="submit" class="btn btn-success btn-block" value="Valider">
   					</div>
   				</div>
 			</form>

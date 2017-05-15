@@ -8,6 +8,7 @@ let session = require('express-session');
 
 let db = require('./modules/db');
 let login = require('./modules/login');
+let lesson = require('./modules/lesson');
 
 //Moteur de template
 app.set('view engine', 'ejs');
@@ -79,6 +80,16 @@ app.get('/admin/lesson', (request, response) => {
 	login.isLogged(session, request, db, 1, (log) => {
 		if(log) {
 			response.render('./admin/lessonAdmin');
+		} else {
+			response.redirect('/admin');
+		}
+	});
+});
+
+app.post('/admin/lesson', (request, response) => {
+	login.isLogged(session, request, db, 1, (log) => {
+		if(log) {
+			lesson.addLesson(request.body); 
 		} else {
 			response.redirect('/admin');
 		}
