@@ -1,11 +1,13 @@
 'use strict';
 
+//Modules
 let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
 let sha1 = require('sha1');
 let session = require('express-session');
 
+//Modules personnelles 
 let db = require('./modules/db');
 let login = require('./modules/login');
 let lesson = require('./modules/lesson');
@@ -89,7 +91,8 @@ app.get('/admin/lesson', (request, response) => {
 app.post('/admin/lesson', (request, response) => {
 	login.isLogged(session, request, db, 1, (log) => {
 		if(log) {
-			lesson.addLesson(request.body); 
+			lesson.addLesson(request.body, db); 
+			response.redirect('/admin/accueil');
 		} else {
 			response.redirect('/admin');
 		}

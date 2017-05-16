@@ -49,11 +49,12 @@ exports.sqlInsert = function(statement, key) {
 	closeDb();
 }
 
+//Requête insert qui récupère l'id inséré
 exports.sqlInsertGetId = function(statement, key, callback) {
 	openDb();
 	mySqlClient.query(statement, key, (err, result) => {
 		if(err) throw err;
-		callback(result.ID_LESSON);
+		callback(result.insertId);
 	});
 	closeDb();
 }

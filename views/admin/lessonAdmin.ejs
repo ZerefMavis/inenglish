@@ -2,12 +2,8 @@
 <html>
 <head>
 	<title>Accueil administrateur</title>
-	<meta charset="utf-8"/>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/admin/lessonAdmin.css">
-	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<script src="/javascripts/jquery.js"></script>
-	<script src="/bootstrap/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+	<% include ../header %>
 	<script src="/ckeditor/ckeditor.js"></script>
 	<script src="/ckeditor/adapters/jquery.js"></script>
 </head>
@@ -54,7 +50,7 @@
 			<form id="addLesson" class="form-horizontal" action="/admin/lesson" method="post">
   				<div class="form-group" id="number">
     				<div class="col-md-2">
-      					<input type="text" class="form-control" name="num" placeholder="N°" required>
+      					<input type="text" class="form-control" name="num" placeholder="N°" pattern="[0-9]+" required>
     				</div>
     				<div class="col-md-10" id="title">
       					<input type="text" class="form-control" name="title" placeholder="Titre de la leçon" required>
@@ -63,7 +59,7 @@
 
   				<div class="form-group" id="rule">
   					<div class="col-md-12">
- 						<textarea id="ruleEditor1" class="ckeditor" name="rule1" required></textarea> 						
+ 						<textarea id="ruleEditor1" class="ckeditor" name="rule1" required></textarea>		
   					</div>
   				</div>
 

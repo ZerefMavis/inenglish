@@ -2,11 +2,8 @@
 <html>
 <head>
 	<title>Connexion administrateur</title>
-	<meta charset="utf-8"/>
+	<% include ../header %>
 	<link rel="stylesheet" type="text/css" href="/stylesheets/admin/indexAdmin.css">
-	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<script src="/javascripts/jquery.js"></script>
-	<script src="/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -32,27 +29,15 @@
 				</div>
 			</div>
 		</div>
-
-		<!-- Modal -->
-		<div id="myModal" class="modal fade" role="dialog">
-  			<div class="modal-dialog">
-    			<!-- Modal content-->
-	    		<div class="modal-content">
-	      			<div class="modal-header">
-	        			<button type="button" class="close" data-dismiss="modal">&times;</button>
-	        			<h4 class="modal-title">Erreur de connexion : </h4>
-	      			</div>
-	      			<div class="modal-body">
-	       				<p>Identifiant ou mot de passe incorrect.</p>
-	      			</div>
-	    		</div>
-			</div>
-		</div>
 	</div>
+
+	<!-- Affiche un modal d'erreur en cas d'échec lors de la connexion -->
 	<% if(locals.error && locals.error === true) { %>
+		<% include ../modals/modalLogin %>
 		<script type="text/javascript">
-			$('#myModal').modal('show'); 
+			$('#modalLogin').modal('show'); 
 		</script>
 	<% } %>
+	<!-- Fin -->
 </body>
 </html>
