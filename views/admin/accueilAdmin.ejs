@@ -89,5 +89,14 @@
       	</div>
     </footer>
     <!-- End footer -->
+
+    <!-- Affiche un modal dans le cas où une leçon a été ajoutée -->
+	<% if(locals.lesson) { %>
+		<% include ../modals/modalLesson %>
+		<script type="text/javascript">
+			$('#modalLesson').modal('show'); 
+		</script>
+	<% } %>
+	<!-- Fin -->
 </body>
 </html>

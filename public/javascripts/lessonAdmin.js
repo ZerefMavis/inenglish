@@ -91,3 +91,23 @@ function update(id) {
 		$("#addTab").remove()
 	}
 }
+
+$("#addLesson").submit(function() {
+	let numLesson = $("#numLesson").val();
+
+	$.ajaxSetup({async:false});
+	$.post(
+		"/admin/lesson/ajax", 
+		{ num : numLesson },
+		function(data) {
+			if(data === "exist") {
+
+			} else {
+				
+			}
+		},
+		"text" 
+	);
+	$.ajaxSetup({async:true});
+});
+

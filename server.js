@@ -32,7 +32,11 @@ app.get('/admin', (request, response) => {
 		if(log) {
 			response.redirect('/admin/accueil');
 		} else {
-			response.render('./admin/indexAdmin');
+			if(request.query.login && request.query.login === "404") {
+				response.render('./admin/indexAdmin', { login : true });
+			} else {
+				response.render('./admin/indexAdmin');
+			}
 		}
 	})
 });
@@ -50,7 +54,7 @@ app.post('/admin', (request, response) => {
 					request.session.username = username;
 					response.redirect('/admin/accueil');
 				} else {
-					response.render('./admin/indexAdmin', { error: true });
+					response.redirect('/admin?login=404');
 				}
 			});
 		} else {
@@ -62,7 +66,11 @@ app.post('/admin', (request, response) => {
 app.get('/admin/accueil', (request, response) => {
 	login.isLogged(session, request, db, 1, (log) => {
 		if(log) {
-			response.render('./admin/accueilAdmin');
+			if(request.query.lesson && request.query.lesson === "200") {
+				response.render('./admin/accueilAdmin', { lesson : true });
+			} else {
+				response.render('./admin/accueilAdmin');
+			}
 		} else {
 			response.redirect('/admin');
 		}
@@ -92,7 +100,7 @@ app.post('/admin/lesson', (request, response) => {
 	login.isLogged(session, request, db, 1, (log) => {
 		if(log) {
 			lesson.addLesson(request.body, db); 
-			response.redirect('/admin/accueil');
+			response.redirect('/admin/accueil?lesson=200');
 		} else {
 			response.redirect('/admin');
 		}

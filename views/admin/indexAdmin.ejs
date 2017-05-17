@@ -32,7 +32,7 @@
 	</div>
 
 	<!-- Affiche un modal d'erreur en cas d'échec lors de la connexion -->
-	<% if(locals.error && locals.error === true) { %>
+	<% if(locals.login) { %>
 		<% include ../modals/modalLogin %>
 		<script type="text/javascript">
 			$('#modalLogin').modal('show'); 
