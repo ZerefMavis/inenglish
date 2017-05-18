@@ -94,6 +94,7 @@ function update(id) {
 
 $("#addLesson").submit(function() {
 	let numLesson = $("#numLesson").val();
+	let boolean;
 
 	$.ajaxSetup({async:false});
 	$.post(
@@ -101,13 +102,16 @@ $("#addLesson").submit(function() {
 		{ num : numLesson },
 		function(data) {
 			if(data === "exist") {
-
+				boolean = false;
 			} else {
-				
+				boolean = true;
 			}
 		},
 		"text" 
 	);
 	$.ajaxSetup({async:true});
+
+	$('#modalExistLesson').modal('show');
+	return boolean;
 });
 
