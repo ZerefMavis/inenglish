@@ -84,5 +84,15 @@
 
     <script src="/javascripts/lessonAdmin.js"></script>
     <% include  ../modals/modalExistLesson %>
+    <% include  ../modals/modalRuleContent %>
+
+    <!-- Affiche un modal dans le cas où une erreur pendant l'ajout d'une leçon est survenue -->
+	<% if(locals.lesson && locals.lesson === "error") { %>
+		<% include ../modals/modalLessonError %>
+		<script type="text/javascript">
+			$('#modalLessonError').modal('show'); 
+		</script>
+	<% } %>
+	<!-- Fin -->
 </body>
 </html>

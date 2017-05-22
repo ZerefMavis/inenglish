@@ -94,6 +94,7 @@ function update(id) {
 
 $("#addLesson").submit(function() {
 	let numLesson = $("#numLesson").val();
+	let content = $("#ruleEditor1").val();
 	let boolean;
 
 	$.ajaxSetup({async:false});
@@ -102,6 +103,7 @@ $("#addLesson").submit(function() {
 		{ num : numLesson },
 		function(data) {
 			if(data === "exist") {
+				$('#modalExistLesson').modal('show');
 				boolean = false;
 			} else {
 				boolean = true;
@@ -111,7 +113,13 @@ $("#addLesson").submit(function() {
 	);
 	$.ajaxSetup({async:true});
 
-	$('#modalExistLesson').modal('show');
+	if(boolean === true) {
+		if(content === '') {
+			$('#modalRuleContent').modal('show');
+			boolean = false;
+		}
+	}
+
 	return boolean;
 });
 

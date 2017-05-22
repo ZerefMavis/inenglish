@@ -90,7 +90,11 @@ app.get('/logoutAdmin', (request, response) => {
 app.get('/admin/lesson', (request, response) => {
 	login.isLogged(session, request, db, 1, (log) => {
 		if(log) {
-			response.render('./admin/lessonAdmin');
+			if(request.query.lesson && request.query.lesson === "404") {
+				response.render('./admin/lessonAdmin', { lesson : "error" });
+			} else {
+				response.render('./admin/lessonAdmin');
+			}
 		} else {
 			response.redirect('/admin');
 		}
@@ -100,8 +104,13 @@ app.get('/admin/lesson', (request, response) => {
 app.post('/admin/lesson', (request, response) => {
 	login.isLogged(session, request, db, 1, (log) => {
 		if(log) {
-			lesson.addLesson(request.body, db); 
-			response.redirect('/admin/accueil?lesson=200');
+			let bool = lesson.addLesson(request.body, db); 
+
+			if(bool === true) {
+				response.redirect('/admin/accueil?lesson=200');
+			} else {
+				response.redirect('/admin/lesson?lesson=404');
+			}
 		} else {
 			response.redirect('/admin');
 		}
@@ -111,8 +120,13 @@ app.post('/admin/lesson', (request, response) => {
 app.post('/admin/lesson/ajax', (request, response) => {
 	login.isLogged(session, request, db, 1, (log) => {
 		if(log) {
-			let data = ajax.existLesson(request.body.num, db);
-			console.log(data);
+			let data = ajax.existLesson(request.body.num, db, (bool) => {
+				if(bool === true)  {
+					response.send("exist");
+				} else {
+					response.send("not exist");
+				}
+			});
 		} else {
 			response.redirect('/admin');
 		}
