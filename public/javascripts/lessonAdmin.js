@@ -114,7 +114,7 @@ $("#addLesson").submit(function() {
 	$.ajaxSetup({async:true});
 
 	if(boolean === true) {
-		if(content === '') {
+		if(content === "") {
 			$('#modalRuleContent').modal('show');
 			boolean = false;
 		}

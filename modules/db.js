@@ -1,3 +1,10 @@
+/**
+* Module 
+* @file
+* @author Yoan Habib
+*/
+
+
 let mysql = require('mysql');
 
 //Configuration
